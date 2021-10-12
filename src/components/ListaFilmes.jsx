@@ -11,6 +11,9 @@ export default class ListaFilme extends React.Component {
         }
         this.titulo = props.titulo
         this.categoria = props.categoria
+        this.mostrarCadastro = props.mostrarCadastro
+        this.mostrarDetalhes = props.mostrarDetalhes
+        this.deleteFilme = props.deleteFilme
     }
 
     componentDidMount() {
@@ -33,9 +36,9 @@ export default class ListaFilme extends React.Component {
             {this.state.filmes.map(filme => <Filme
                 key={filme._id}
                 data={filme}
-                mostrarCadastro={() => props.mostrarCadastro(filme, "Alterar")}
-                mostrarDetalhes={() => props.mostrarDetalhes(filme)}
-                deleteFilme={() => props.deleteFilme(filme._id)}
+                mostrarCadastro={() => this.mostrarCadastro(filme, "Alterar")}
+                mostrarDetalhes={() => this.mostrarDetalhes(filme)}
+                deleteFilme={() => this.deleteFilme(filme._id)}
             />)}
         </div>
     </div>
