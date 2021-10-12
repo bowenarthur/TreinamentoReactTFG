@@ -1,36 +1,44 @@
 import React from 'react'
+import Filme from './Filme'
+import axios from "axios"
 import '../style.css'
 
-export default props => (
-    <>
-        <h3>{props.titulo}</h3>
+export default class ListaFilme extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            filmes: []
+        }
+        this.titulo = props.titulo
+        this.categoria = props.categoria
+    }
+
+    componentDidMount() {
+        this.getFilmes()
+    }
+
+    getFilmes = _ => axios
+        .get(this.getURL())
+        .then(res => this.setState({ filmes: res.data }))
+        .catch((err) => console.log(err))
+
+    getURL = _ => this.categoria ?
+        `https://frameworks-web.herokuapp.com/api/filmes?categoria=${this.categoria}` :
+        `https://frameworks-web.herokuapp.com/api/filmes`
+
+
+    render = _ => <div>
+        <h3>{this.titulo}</h3>
         <div className="scrollmenu row dragscroll">
-            {props.children.map(filme => {
-                return (
-                    <div className="column" key={filme._id}>
-                        <div className="botoes">
-                            <a
-                                className="edit"
-                                onClick={() => props.mostrarCadastro(filme, "Alterar")}
-                            >
-                                &#9998;
-                            </a>
-                            <a className="delete" onClick={() => props.deleteFilme(filme._id)}>
-                                &#128465;
-                            </a>
-                        </div>
-                        <div className="card">
-                            <div onClick={() => props.mostrarDetalhes(filme)}>
-                                <img alt="" src={filme.foto} />
-                                <p>{filme.nome}</p>
-                            </div>
-                        </div>
-                    </div>
-                )
-            })}
+            {this.state.filmes.map(filme => <Filme
+                data={filme}
+                mostrarCadastro={() => props.mostrarCadastro(filme, "Alterar")}
+                mostrarDetalhes={() => props.mostrarDetalhes(filme)}
+                deleteFilme={() => props.deleteFilme(filme._id)}
+            />)}
         </div>
-    </>
-)
+    </div>
+}
 
 
 

@@ -11,7 +11,6 @@ export default class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            filmes: [],
             filme: {},
             personagens: [],
             open: false,
@@ -27,13 +26,7 @@ export default class App extends React.Component {
             "https://cdnjs.cloudflare.com/ajax/libs/dragscroll/0.0.8/dragscroll.min.js";
         script.async = true;
         document.body.appendChild(script);
-        this.getFilmes();
     }
-
-    getFilmes = _ => axios
-        .get("https://frameworks-web.herokuapp.com/api/filmes")
-        .then(res => this.setState({ filmes: res.data }))
-        .catch((err) => console.log(err))
 
     deleteFilme = id => axios
         .delete("https://frameworks-web.herokuapp.com/api/filmes/" + id)
@@ -93,16 +86,19 @@ export default class App extends React.Component {
         return (
             <div className="App">
                 <Header onClick={() => this.mostrarCadastro({}, "Cadastro")} />
-                <h3>Últimos filmes</h3>
-                <Menu />
                 <ListaFilmes
-                    titulo="Ação"
+                    titulo="Últimos filmes"
                     mostrarCadastro={this.mostrarCadastro}
                     mostrarDetalhes={this.mostrarDetalhes}
                     deleteFilme={this.deleteFilme}
-                >
-                    {this.state.filmes}
-                </ListaFilmes>
+                />
+                <ListaFilmes
+                    titulo="Ação"
+                    categoria="Ação"
+                    mostrarCadastro={this.mostrarCadastro}
+                    mostrarDetalhes={this.mostrarDetalhes}
+                    deleteFilme={this.deleteFilme}
+                />
                 <Popup open={this.state.open} onClose={this.closeModal}>
                     <div className="Modal">
                         <a className="close" onClick={this.closeModal}>
