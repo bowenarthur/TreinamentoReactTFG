@@ -4,6 +4,7 @@ import axios from "axios";
 import Menu from "./menu";
 import Popup from "reactjs-popup";
 import Formulario from "./formulario";
+import Header from './components/Header'
 import ListaFilmes from "./components/ListaFilmes"
 
 export default class App extends React.Component {
@@ -91,16 +92,7 @@ export default class App extends React.Component {
     render() {
         return (
             <div className="App">
-                <div className="Header">
-                    <h3 className="TituloSite">LISTA DE FILMES</h3>
-                    <ul className="MenuSite">
-                        <li>
-                            <a onClick={() => this.mostrarCadastro({}, "Cadastro")}>
-                                CADASTRAR FILME
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+                <Header onClick={() => this.mostrarCadastro({}, "Cadastro")} />
                 <h3>Últimos filmes</h3>
                 <Menu />
                 <ListaFilmes
