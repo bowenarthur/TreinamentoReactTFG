@@ -1,9 +1,7 @@
-import React from "react";
-import "./style.css";
-import axios from "axios";
-import Menu from "./menu";
-import Popup from "reactjs-popup";
-import Formulario from "./formulario";
+import React from "react"
+import "./style.css"
+import Popup from "reactjs-popup"
+import Formulario from "./components/Formulario"
 import Header from './components/Header'
 import ListaFilmes from "./components/ListaFilmes"
 
@@ -27,17 +25,6 @@ export default class App extends React.Component {
         script.async = true;
         document.body.appendChild(script);
     }
-
-    deleteFilme = id => axios
-        .delete("https://frameworks-web.herokuapp.com/api/filmes/" + id)
-        .then(res => {
-            alert("Filme deletado com sucesso")
-            window.location.reload()
-        })
-        .catch((err) => {
-            alert("Ocorreu um erro")
-            console.log(err)
-        })
 
     mostrarDetalhes = (filme) => {
         this.setState({
@@ -90,14 +77,12 @@ export default class App extends React.Component {
                     titulo="Últimos filmes"
                     mostrarCadastro={this.mostrarCadastro}
                     mostrarDetalhes={this.mostrarDetalhes}
-                    deleteFilme={this.deleteFilme}
                 />
                 <ListaFilmes
                     titulo="Ação"
                     categoria="Ação"
                     mostrarCadastro={this.mostrarCadastro}
                     mostrarDetalhes={this.mostrarDetalhes}
-                    deleteFilme={this.deleteFilme}
                 />
                 <Popup open={this.state.open} onClose={this.closeModal}>
                     <div className="Modal">

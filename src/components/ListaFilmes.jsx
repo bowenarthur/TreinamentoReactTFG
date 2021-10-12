@@ -13,7 +13,6 @@ export default class ListaFilme extends React.Component {
         this.categoria = props.categoria
         this.mostrarCadastro = props.mostrarCadastro
         this.mostrarDetalhes = props.mostrarDetalhes
-        this.deleteFilme = props.deleteFilme
     }
 
     componentDidMount() {
@@ -38,7 +37,6 @@ export default class ListaFilme extends React.Component {
                 data={filme}
                 mostrarCadastro={() => this.mostrarCadastro(filme, "Alterar")}
                 mostrarDetalhes={() => this.mostrarDetalhes(filme)}
-                deleteFilme={() => this.deleteFilme(filme._id)}
             />)}
         </div>
     </div>
