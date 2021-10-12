@@ -2,7 +2,7 @@ import React from 'react'
 import '../style.css'
 
 export default props => (
-    <div className="column" key={props.data._id}>
+    <div className="column">
         <div className="botoes">
             <a className="edit" onClick={props.mostrarCadastro}>
                 &#9998;

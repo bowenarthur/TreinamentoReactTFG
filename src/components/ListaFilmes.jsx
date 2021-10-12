@@ -31,6 +31,7 @@ export default class ListaFilme extends React.Component {
         <h3>{this.titulo}</h3>
         <div className="scrollmenu row dragscroll">
             {this.state.filmes.map(filme => <Filme
+                key={filme._id}
                 data={filme}
                 mostrarCadastro={() => props.mostrarCadastro(filme, "Alterar")}
                 mostrarDetalhes={() => props.mostrarDetalhes(filme)}
