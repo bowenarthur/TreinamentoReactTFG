@@ -1,0 +1,329 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  background-image: url("https://www.mediatools.com.br/fotos/1921428072016120156.jpg");
+}
+
+textarea {
+  resize: none;
+  margin-top: 2%;
+}
+
+h3 {
+  margin-left: 6%;
+  margin-bottom: 0;
+  font-size: 1.5vw;
+  color: white;
+}
+
+h4 {
+  font-size: 1.2vw;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #444;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.scrollmenu {
+  background-color: none;
+  overflow: auto;
+  width: 90%;
+}
+
+.row {
+  margin-left: 5%;
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 1%;
+}
+
+.column {
+  padding: 0 10px;
+  margin-top: 1%;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 1%;
+  text-align: center;
+  background-color: #fff;
+  width: 14vw;
+  height: 55vh;
+  cursor: pointer;
+}
+
+.card img {
+  width: 100%;
+}
+
+.card p {
+  font-size: 1vw;
+}
+
+.card img:hover,
+.card:hover {
+  opacity: 90%;
+}
+
+.card button {
+  background: none;
+  border: none;
+  color: black;
+  font-size: 1vw;
+  cursor: pointer;
+}
+
+.card button:hover {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.Formulario {
+  text-align: center;
+  display: flex;
+  width: 100%;
+  justify-content: left;
+  text-align: right;
+}
+
+.Formulario h3 {
+  margin: 0 25% 0 0;
+}
+
+.Formulario label {
+  font-size: 1.2vw;
+}
+
+.Formulario input,
+.Formulario select,
+.Formulario textarea {
+  margin-top: 1%;
+  margin-right: 5%;
+  font-size: 1vw;
+  width: 45%;
+}
+
+.Formulario button,
+.BotaoCadastrar {
+  font-size: 1.2vw;
+  margin: 2%;
+  background-color: rgb(231, 231, 231);
+  border: 1px solid black;
+  border-radius: 0.3rem;
+  padding: 0.3%;
+  cursor: pointer;
+}
+
+.BotaoCadastrar {
+  width: 25%;
+  padding: 0.5%;
+}
+
+.Formulario button:hover,
+.BotaoCadastrar:hover {
+  background-color: rgba(231, 231, 231, 0.8);
+}
+
+.Formulario div {
+  width: 50%;
+}
+
+.Tabela {
+  text-align: center;
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 2%;
+  background-color: #fff;
+  font-size: 1vw;
+  table-layout: auto;
+  border: 1px solid black;
+}
+
+.Tabela td,
+.Tabela th {
+  border-bottom: 1px solid black;
+}
+
+.Tabela th {
+  text-align: center;
+  color: black;
+  font-weight: bold;
+  padding: 0.2% 0;
+}
+
+.Tabela td {
+  padding: 1%;
+  height: auto;
+  cursor: pointer;
+}
+
+.Modal {
+  max-width: 50vw;
+  max-height: 80vh;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
+  background-color: white;
+  text-align: center;
+  color: black;
+  padding: 3%;
+}
+
+.Modal h3 {
+  margin-bottom: 8%;
+  margin-top: 0;
+  font-size: 1.2vw;
+}
+
+.Modal p {
+  font-size: 0.9vw;
+}
+
+.Modal button {
+  border: none;
+  background-color: rgb(231, 231, 231);
+  padding: 2.5%;
+  font-size: 1.2vw;
+  border: 1px solid black;
+  border-radius: 0.3rem;
+  max-width: 30%;
+  margin: 2% 2% 0 0;
+  cursor: pointer;
+}
+
+.Modal button:hover {
+  background-color: rgba(231, 231, 231, 0.8);
+}
+
+.close {
+  cursor: pointer;
+  position: absolute;
+  display: block;
+  padding: 2px 5px;
+  line-height: 20px;
+  right: -10px;
+  top: -10px;
+  font-size: 24px;
+  background: #ffffff;
+  border-radius: 18px;
+  border: 1px solid #cfcece;
+  color: black;
+}
+
+.botoes {
+  display: flex;
+  justify-content: space-between;
+  width: 102%;
+}
+
+.edit,
+.delete {
+  cursor: pointer;
+  display: block;
+  text-align: center;
+  line-height: 20px;
+  background: #b22222;
+  border: 1px solid #cfcece;
+  color: white;
+  width: 50%;
+}
+
+.edit:hover,
+.delete:hover {
+  background: rgba(178, 34, 34, 0.6);
+}
+
+.Esconde {
+  display: none;
+}
+
+.Header {
+  background-color: #b22222;
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+  padding: 0.5% 0 0.5% 1%;
+  position: sticky;
+  color: white;
+  font-size: 0.9vw;
+}
+
+.MenuSite {
+  list-style-type: none;
+  margin: 1% 0 0 20%;
+  padding: 0;
+  width: 40%;
+  display: flex;
+  font-size: 1.5vw;
+}
+
+.MenuSite li {
+  margin-left: 2%;
+  color: white;
+}
+
+.MenuSite li > h4 {
+  margin: 0;
+}
+
+.MenuSite li > a {
+  cursor: pointer;
+}
+
+.MenuSite li > a:hover {
+  color: lightgrey;
+}
+
+.TituloSite {
+  width: 40%;
+  margin: 1% 10%;
+  font-size: 1.8vw;
+}
+
+@media screen and (max-width: 1000px) {
+  .card {
+    width: 12vw;
+    height: 32vh;
+  }
+
+  .card p {
+    font-size: 1.3vw;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .row {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+  }
+
+  .card {
+    width: 100%;
+    height: 70vh;
+  }
+
+  .card p {
+    font-size: 3.5vw;
+  }
+
+  h3 {
+    font-size: 4vw;
+    margin-left: 10%;
+  }
+}
