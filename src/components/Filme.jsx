@@ -18,20 +18,22 @@ export default class Filme extends React.Component {
             console.log(err)
         })
 
-    render = _ => (
-        <div className="column">
-            <div className="botoes">
-                <a className="edit" onClick={this.props.mostrarCadastro}>
-                    &#9998;
-                </a>
-                <a className="delete" onClick={() => this.deleteFilme(this.props.children._id)}>
-                    &#128465;
-                </a>
+    render() {
+        return (
+            <div className="column">
+                <div className="botoes">
+                    <a className="edit" onClick={this.props.mostrarCadastro}>
+                        &#9998;
+                    </a>
+                    <a className="delete" onClick={() => this.deleteFilme(this.props.children._id)}>
+                        &#128465;
+                    </a>
+                </div>
+                <div className="card" onClick={this.props.mostrarDetalhes}>
+                    <img alt="" src={this.props.children.foto} />
+                    <p>{this.props.children.nome}</p>
+                </div>
             </div>
-            <div className="card" onClick={this.props.mostrarDetalhes}>
-                <img alt="" src={this.props.children.foto} />
-                <p>{this.props.children.nome}</p>
-            </div>
-        </div>
-    )
+        )
+    }
 }

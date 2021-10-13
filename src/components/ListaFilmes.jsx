@@ -23,22 +23,24 @@ export default class ListaFilme extends React.Component {
         `https://frameworks-web.herokuapp.com/api/filmes`
 
 
-    render = _ => (
-        <div>
-            <h3>{this.props.titulo}</h3>
-            <div className="scrollmenu row dragscroll">
-                {this.state.filmes.map(filme => (
-                    <Filme
-                        key={filme._id}
-                        mostrarCadastro={() => this.props.mostrarCadastro(filme, "Alterar")}
-                        mostrarDetalhes={() => this.props.mostrarDetalhes(filme)}
-                    >
-                        {filme}
-                    </Filme>
-                ))}
+    render() {
+        return (
+            <div>
+                <h3>{this.props.titulo}</h3>
+                <div className="scrollmenu row dragscroll">
+                    {this.state.filmes.map(filme => (
+                        <Filme
+                            key={filme._id}
+                            mostrarCadastro={() => this.props.mostrarCadastro(filme, "Alterar")}
+                            mostrarDetalhes={() => this.props.mostrarDetalhes(filme)}
+                        >
+                            {filme}
+                        </Filme>
+                    ))}
+                </div>
             </div>
-        </div>
-    )
+        )
+    }
 }
 
 

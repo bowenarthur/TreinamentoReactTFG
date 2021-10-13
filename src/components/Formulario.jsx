@@ -19,15 +19,15 @@ export default class Formulario extends React.Component {
     }
 
     componentDidMount = () => {
-        if (this.props.Filme) {
+        if (this.props.filme) {
             this.setState({
-                nome: this.props.Filme.nome,
-                foto: this.props.Filme.foto,
-                categoria: this.props.Filme.categoria,
-                sinopse: this.props.Filme.sinopse,
-                ano: this.props.Filme.ano,
-                tempo: this.props.Filme.tempo,
-                personagens: this.props.Filme.personagens
+                nome: this.props.filme.nome,
+                foto: this.props.filme.foto,
+                categoria: this.props.filme.categoria,
+                sinopse: this.props.filme.sinopse,
+                ano: this.props.filme.ano,
+                tempo: this.props.filme.tempo,
+                personagens: this.props.filme.personagens
             });
         }
     };
@@ -106,11 +106,11 @@ export default class Formulario extends React.Component {
             tempo: this.state.tempo,
             personagens: this.state.personagens
         };
-        if (this.props.Tipo === "Alterar") {
+        if (this.props.tipo === "Alterar") {
             axios
                 .put(
                     "https://frameworks-web.herokuapp.com/api/filmes/" +
-                    this.props.Filme._id,
+                    this.props.filme._id,
                     data
                 )
                 .then((res) => {
@@ -121,7 +121,7 @@ export default class Formulario extends React.Component {
                     alert("Ocorreu um erro");
                     console.log(err);
                 });
-        } else if (this.props.Tipo === "Cadastro") {
+        } else if (this.props.tipo === "Cadastro") {
             axios
                 .post("https://frameworks-web.herokuapp.com/api/filmes", data)
                 .then((res) => {
@@ -137,109 +137,114 @@ export default class Formulario extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.submit}>
-                <h2>Cadastro de Filme</h2>
-                <div className="Formulario">
-                    <div>
-                        <label htmlFor="nome">Nome: </label>
-                        <input
-                            type="text"
-                            name="nome"
-                            value={this.state.nome}
-                            onChange={this.handleChange}
-                            required
-                        />
-                        <br />
-                        <label htmlFor="foto">URL da foto: </label>
-                        <input
-                            type="text"
-                            name="foto"
-                            value={this.state.foto}
-                            onChange={this.handleChange}
-                            required
-                        />
-                        <br />
-                        <label htmlFor="categoria">Categoria: </label>
-                        <select
-                            name="categoria"
-                            value={this.state.categoria}
-                            onChange={this.handleChange}
-                            required
-                        >
-                            <option value=""> </option>
-                            <option value="Ação">Ação</option>
-                            <option value="Comédia">Comédia</option>
-                            <option value="Documentário">Documentário</option>
-                            <option value="Drama">Drama</option>
-                            <option value="Fantasia">Fantasia</option>
-                            <option value="Ficção">Ficção</option>
-                            <option value="Romance">Romance</option>
-                            <option value="Terror">Terror</option>
-                        </select>
-                        <br />
-                        <label htmlFor="sinopse">Sinopse: </label>
-                        <textarea
-                            name="sinopse"
-                            value={this.state.sinopse}
-                            onChange={this.handleChange}
-                            rows="3"
-                            required
-                        />
-                        <br />
-                        <label htmlFor="ano">Ano: </label>
-                        <input
-                            type="number"
-                            name="ano"
-                            value={this.state.ano}
-                            onChange={this.handleChange}
-                            required
-                        />
-                        <br />
-                        <label htmlFor="tempo">Duração: </label>
-                        <input
-                            type="text"
-                            name="tempo"
-                            value={this.state.tempo}
-                            onChange={this.handleChange}
-                            required
-                        />
-                        <br />
-                    </div>
-                    <div>
-                        <h3>Personagens</h3>
-                        <br />
-                        <label htmlFor="nomepersonagem">Nome: </label>
-                        <input
-                            type="text"
-                            name="nomepersonagem"
-                            value={this.state.nomepersonagem}
-                            onChange={this.handleChange}
-                        />
-                        <br />
-                        <label htmlFor="personagem">Ator/Atriz: </label>
-                        <input
-                            type="text"
-                            name="ator"
-                            value={this.state.ator}
-                            onChange={this.handleChange}
-                        />
-                        <button type="button" onClick={this.adicionarPersonagem}>
-                            Adicionar
-                        </button>
+            <div className="Modal">
+                <a className="close" onClick={this.props.onClose}>
+                    &times;
+                </a>
+                <form onSubmit={this.submit}>
+                    <h2>Cadastro de Filme</h2>
+                    <div className="Formulario">
+                        <div>
+                            <label htmlFor="nome">Nome: </label>
+                            <input
+                                type="text"
+                                name="nome"
+                                value={this.state.nome}
+                                onChange={this.handleChange}
+                                required
+                            />
+                            <br />
+                            <label htmlFor="foto">URL da foto: </label>
+                            <input
+                                type="text"
+                                name="foto"
+                                value={this.state.foto}
+                                onChange={this.handleChange}
+                                required
+                            />
+                            <br />
+                            <label htmlFor="categoria">Categoria: </label>
+                            <select
+                                name="categoria"
+                                value={this.state.categoria}
+                                onChange={this.handleChange}
+                                required
+                            >
+                                <option value=""> </option>
+                                <option value="Ação">Ação</option>
+                                <option value="Comédia">Comédia</option>
+                                <option value="Documentário">Documentário</option>
+                                <option value="Drama">Drama</option>
+                                <option value="Fantasia">Fantasia</option>
+                                <option value="Ficção">Ficção</option>
+                                <option value="Romance">Romance</option>
+                                <option value="Terror">Terror</option>
+                            </select>
+                            <br />
+                            <label htmlFor="sinopse">Sinopse: </label>
+                            <textarea
+                                name="sinopse"
+                                value={this.state.sinopse}
+                                onChange={this.handleChange}
+                                rows="3"
+                                required
+                            />
+                            <br />
+                            <label htmlFor="ano">Ano: </label>
+                            <input
+                                type="number"
+                                name="ano"
+                                value={this.state.ano}
+                                onChange={this.handleChange}
+                                required
+                            />
+                            <br />
+                            <label htmlFor="tempo">Duração: </label>
+                            <input
+                                type="text"
+                                name="tempo"
+                                value={this.state.tempo}
+                                onChange={this.handleChange}
+                                required
+                            />
+                            <br />
+                        </div>
+                        <div>
+                            <h3>Personagens</h3>
+                            <br />
+                            <label htmlFor="nomepersonagem">Nome: </label>
+                            <input
+                                type="text"
+                                name="nomepersonagem"
+                                value={this.state.nomepersonagem}
+                                onChange={this.handleChange}
+                            />
+                            <br />
+                            <label htmlFor="personagem">Ator/Atriz: </label>
+                            <input
+                                type="text"
+                                name="ator"
+                                value={this.state.ator}
+                                onChange={this.handleChange}
+                            />
+                            <button type="button" onClick={this.adicionarPersonagem}>
+                                Adicionar
+                            </button>
 
-                        <table className="Tabela">
-                            <thead>
-                                <tr>
-                                    <th>Nome</th>
-                                    <th>Ator/Atriz</th>
-                                </tr>
-                            </thead>
-                            <tbody>{this.renderPersonagens()}</tbody>
-                        </table>
+                            <table className="Tabela">
+                                <thead>
+                                    <tr>
+                                        <th>Nome</th>
+                                        <th>Ator/Atriz</th>
+                                    </tr>
+                                </thead>
+                                <tbody>{this.renderPersonagens()}</tbody>
+                            </table>
+                        </div>
                     </div>
-                </div>
-                <input type="submit" className="BotaoCadastrar" value="Enviar" />
-            </form>
-        );
+                    <input type="submit" className="BotaoCadastrar" value="Enviar" />
+                </form>
+            </div>
+        )
     }
 }

@@ -8,22 +8,21 @@ import Detalhes from './components/Detalhes'
 
 export default class App extends React.Component {
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
             filme: { personagens: [] },
             open: false,
             open1: false,
-            tipo: "",
-            categoria: ""
-        };
+            tipo: ""
+        }
     }
 
     componentDidMount() {
-        const script = document.createElement("script");
+        const script = document.createElement("script")
         script.src =
             "https://cdnjs.cloudflare.com/ajax/libs/dragscroll/0.0.8/dragscroll.min.js";
         script.async = true;
-        document.body.appendChild(script);
+        document.body.appendChild(script)
     }
 
     mostrarDetalhes = (filme) => this.setState({
@@ -65,12 +64,11 @@ export default class App extends React.Component {
                     {this.state.filme}
                 </Detalhes>
                 <Popup open={this.state.open1} onClose={this.closeModal}>
-                    <div className="Modal">
-                        <a className="close" onClick={this.closeModal}>
-                            &times;
-                        </a>
-                        <Formulario Filme={this.state.filme} Tipo={this.state.tipo} />
-                    </div>
+                    <Formulario
+                        filme={this.state.filme}
+                        tipo={this.state.tipo}
+                        onClose={this.closeModal}
+                    />
                 </Popup>
             </div>
         )
