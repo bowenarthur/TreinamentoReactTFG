@@ -73,6 +73,6 @@ export default class App extends React.Component {
                     </div>
                 </Popup>
             </div>
-        );
+        )
     }
 }

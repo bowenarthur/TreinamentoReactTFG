@@ -1,41 +1,31 @@
 import React from 'react'
 import Popup from 'reactjs-popup'
+import ListaPersonagens from './ListaPersonagens'
 
-export default class Detalhes extends React.Component {
-    constructor(props) {
-        super(props)
-    }
-
-    renderPersonagens = _ => this.props.children.personagens.map(
-        personagem => (
-            <tr key={personagem._id}>
-                <td>{personagem.nome}</td>
-                <td>{personagem.ator}</td>
-            </tr>
-        )
-    )
-
-    render = _ => (
-        <Popup open={this.props.open} onClose={this.props.onClose}>
-            <div className="Modal">
-                <a className="close" onClick={this.props.onClose}>
-                    &times;
-                </a>
-                <h4>{this.props.children.nome}</h4>
-                <p>Sinopse: {this.props.children.sinopse}</p>
-                <p>Categoria: {this.props.children.categoria}</p>
-                <p>Duração: {this.props.children.tempo}</p>
-                <p>Ano: {this.props.children.ano}</p>
-                <table className="Tabela">
-                    <thead>
-                        <tr>
-                            <th>Personagem</th>
-                            <th>Ator/Atriz</th>
-                        </tr>
-                    </thead>
-                    <tbody>{this.renderPersonagens()}</tbody>
-                </table>
-            </div>
-        </Popup>
-    )
-}
+export default props => (
+    <Popup open={props.open} onClose={props.onClose}>
+        <div className="Modal">
+            <a className="close" onClick={props.onClose}>
+                &times;
+            </a>
+            <h4>{props.children.nome}</h4>
+            <p>Sinopse: {props.children.sinopse}</p>
+            <p>Categoria: {props.children.categoria}</p>
+            <p>Duração: {props.children.tempo}</p>
+            <p>Ano: {props.children.ano}</p>
+            <table className="Tabela">
+                <thead>
+                    <tr>
+                        <th>Personagem</th>
+                        <th>Ator/Atriz</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <ListaPersonagens>
+                        {props.children.personagens}
+                    </ListaPersonagens>
+                </tbody>
+            </table>
+        </div>
+    </Popup>
+)

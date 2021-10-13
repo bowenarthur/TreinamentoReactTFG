@@ -24,13 +24,13 @@ export default class Filme extends React.Component {
                 <a className="edit" onClick={this.props.mostrarCadastro}>
                     &#9998;
                 </a>
-                <a className="delete" onClick={() => this.deleteFilme(this.props.data._id)}>
+                <a className="delete" onClick={() => this.deleteFilme(this.props.children._id)}>
                     &#128465;
                 </a>
             </div>
             <div className="card" onClick={this.props.mostrarDetalhes}>
-                <img alt="" src={this.props.data.foto} />
-                <p>{this.props.data.nome}</p>
+                <img alt="" src={this.props.children.foto} />
+                <p>{this.props.children.nome}</p>
             </div>
         </div>
     )

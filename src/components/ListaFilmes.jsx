@@ -27,12 +27,15 @@ export default class ListaFilme extends React.Component {
         <div>
             <h3>{this.props.titulo}</h3>
             <div className="scrollmenu row dragscroll">
-                {this.state.filmes.map(filme => <Filme
-                    key={filme._id}
-                    data={filme}
-                    mostrarCadastro={() => this.props.mostrarCadastro(filme, "Alterar")}
-                    mostrarDetalhes={() => this.props.mostrarDetalhes(filme)}
-                />)}
+                {this.state.filmes.map(filme => (
+                    <Filme
+                        key={filme._id}
+                        mostrarCadastro={() => this.props.mostrarCadastro(filme, "Alterar")}
+                        mostrarDetalhes={() => this.props.mostrarDetalhes(filme)}
+                    >
+                        {filme}
+                    </Filme>
+                ))}
             </div>
         </div>
     )
