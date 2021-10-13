@@ -5,9 +5,6 @@ import '../style.css'
 export default class Filme extends React.Component {
     constructor(props) {
         super(props)
-        this.data = props.data
-        this.mostrarCadastro = props.mostrarCadastro
-        this.mostrarDetalhes = props.mostrarDetalhes
     }
 
     deleteFilme = id => axios
@@ -24,16 +21,16 @@ export default class Filme extends React.Component {
     render = _ => (
         <div className="column">
             <div className="botoes">
-                <a className="edit" onClick={this.mostrarCadastro}>
+                <a className="edit" onClick={this.props.mostrarCadastro}>
                     &#9998;
                 </a>
-                <a className="delete" onClick={() => this.deleteFilme(this.data._id)}>
+                <a className="delete" onClick={() => this.deleteFilme(this.props.data._id)}>
                     &#128465;
                 </a>
             </div>
-            <div className="card" onClick={this.mostrarDetalhes}>
-                <img alt="" src={this.data.foto} />
-                <p>{this.data.nome}</p>
+            <div className="card" onClick={this.props.mostrarDetalhes}>
+                <img alt="" src={this.props.data.foto} />
+                <p>{this.props.data.nome}</p>
             </div>
         </div>
     )

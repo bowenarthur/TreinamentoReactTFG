@@ -6,13 +6,7 @@ import '../style.css'
 export default class ListaFilme extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {
-            filmes: []
-        }
-        this.titulo = props.titulo
-        this.categoria = props.categoria
-        this.mostrarCadastro = props.mostrarCadastro
-        this.mostrarDetalhes = props.mostrarDetalhes
+        this.state = { filmes: [] }
     }
 
     componentDidMount() {
@@ -24,22 +18,24 @@ export default class ListaFilme extends React.Component {
         .then(res => this.setState({ filmes: res.data }))
         .catch((err) => console.log(err))
 
-    getURL = _ => this.categoria ?
-        `https://frameworks-web.herokuapp.com/api/filmes?categoria=${this.categoria}` :
+    getURL = _ => this.props.categoria ?
+        `https://frameworks-web.herokuapp.com/api/filmes?categoria=${this.props.categoria}` :
         `https://frameworks-web.herokuapp.com/api/filmes`
 
 
-    render = _ => <div>
-        <h3>{this.titulo}</h3>
-        <div className="scrollmenu row dragscroll">
-            {this.state.filmes.map(filme => <Filme
-                key={filme._id}
-                data={filme}
-                mostrarCadastro={() => this.mostrarCadastro(filme, "Alterar")}
-                mostrarDetalhes={() => this.mostrarDetalhes(filme)}
-            />)}
+    render = _ => (
+        <div>
+            <h3>{this.props.titulo}</h3>
+            <div className="scrollmenu row dragscroll">
+                {this.state.filmes.map(filme => <Filme
+                    key={filme._id}
+                    data={filme}
+                    mostrarCadastro={() => this.props.mostrarCadastro(filme, "Alterar")}
+                    mostrarDetalhes={() => this.props.mostrarDetalhes(filme)}
+                />)}
+            </div>
         </div>
-    </div>
+    )
 }
 
 
