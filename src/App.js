@@ -20,8 +20,8 @@ export default class App extends React.Component {
     componentDidMount() {
         const script = document.createElement("script")
         script.src =
-            "https://cdnjs.cloudflare.com/ajax/libs/dragscroll/0.0.8/dragscroll.min.js";
-        script.async = true;
+            "https://cdnjs.cloudflare.com/ajax/libs/dragscroll/0.0.8/dragscroll.min.js"
+        script.async = true
         document.body.appendChild(script)
     }
 

@@ -1,6 +1,6 @@
-import React from "react";
-import "../style.css";
-import axios from "axios";
+import "../style.css"
+import React from "react"
+import axios from "axios"
 
 export default class Formulario extends React.Component {
     constructor(props) {
