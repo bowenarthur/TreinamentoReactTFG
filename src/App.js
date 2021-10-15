@@ -1,5 +1,5 @@
-import React from "react"
 import "./style.css"
+import React from "react"
 import Popup from "reactjs-popup"
 import Formulario from "./components/Formulario"
 import Header from './components/Header'
@@ -10,9 +10,9 @@ export default class App extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            filme: { personagens: [] },
-            open: false,
-            open1: false,
+            filme: {},
+            openDetalhes: false,
+            openForm: false,
             tipo: ""
         }
     }
@@ -27,28 +27,28 @@ export default class App extends React.Component {
 
     mostrarDetalhes = (filme) => this.setState({
         filme: filme,
-        open: true,
-        open1: false,
+        openDetalhes: true,
+        openForm: false,
         personagens: filme.personagens
     })
 
     mostrarCadastro = (filme, tipo) => this.setState({
-        open1: true,
-        open: false,
+        openForm: true,
+        openDetalhes: false,
         filme: filme,
         tipo: tipo
     })
 
     closeModal = () => this.setState({
-        open: false,
-        open1: false,
-        filme: { personagens: [] }
+        openDetalhes: false,
+        openForm: false,
+        filme: {}
     })
 
     render() {
         return (
             <div className="App">
-                <Header onClick={() => this.mostrarCadastro(this.state.filme, "Cadastro")} />
+                <Header onClick={() => this.mostrarCadastro({}, "Cadastro")} />
                 <ListaFilmes
                     titulo="Últimos filmes"
                     mostrarCadastro={this.mostrarCadastro}
@@ -60,16 +60,18 @@ export default class App extends React.Component {
                     mostrarCadastro={this.mostrarCadastro}
                     mostrarDetalhes={this.mostrarDetalhes}
                 />
-                <Detalhes open={this.state.open} onClose={this.closeModal}>
-                    {this.state.filme}
-                </Detalhes>
-                <Popup open={this.state.open1} onClose={this.closeModal}>
-                    <Formulario
-                        filme={this.state.filme}
-                        tipo={this.state.tipo}
-                        onClose={this.closeModal}
-                    />
-                </Popup>
+                {this.state.openDetalhes &&
+                    <Detalhes open={this.state.openDetalhes} onClose={this.closeModal}>
+                        {this.state.filme}
+                    </Detalhes>}
+                {this.state.openForm &&
+                    <Popup open={this.state.openForm} onClose={this.closeModal}>
+                        <Formulario
+                            filme={this.state.filme}
+                            tipo={this.state.tipo}
+                            onClose={this.closeModal}
+                        />
+                    </Popup>}
             </div>
         )
     }

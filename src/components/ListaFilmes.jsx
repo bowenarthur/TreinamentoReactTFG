@@ -1,7 +1,6 @@
 import React from 'react'
 import Filme from './Filme'
 import axios from "axios"
-import '../style.css'
 
 export default class ListaFilme extends React.Component {
     constructor(props) {

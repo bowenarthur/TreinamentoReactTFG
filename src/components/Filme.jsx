@@ -1,6 +1,5 @@
 import React from 'react'
 import axios from "axios"
-import '../style.css'
 
 export default class Filme extends React.Component {
     constructor(props) {
