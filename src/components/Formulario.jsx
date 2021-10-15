@@ -9,7 +9,7 @@ export default class Formulario extends React.Component {
             personagens: [],
             nome: "",
             foto: "",
-            categoria: "",
+            categoria: this.categorias[0],
             sinopse: "",
             ano: "",
             tempo: ""
@@ -53,7 +53,7 @@ export default class Formulario extends React.Component {
         let data = {
             nome: this.state.nome,
             foto: this.state.foto,
-            categoria: this.state.categoria ?? this.categorias[0],
+            categoria: this.state.categoria,
             sinopse: this.state.sinopse,
             ano: this.state.ano,
             tempo: this.state.tempo,

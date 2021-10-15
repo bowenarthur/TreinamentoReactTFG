@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default props => props.children.length != 0 &&
+export default props => props.children ? props.children.length != 0 &&
     <table className="Tabela">
         <thead>
             <tr>
@@ -16,6 +16,6 @@ export default props => props.children.length != 0 &&
                 </tr>
             ))}
         </tbody>
-    </table>
+    </table> : ''
 
 
