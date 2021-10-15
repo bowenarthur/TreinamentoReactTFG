@@ -1,5 +1,6 @@
 import React from "react"
 import axios from "axios"
+import ListaPersonagens from "./ListaPersonagens";
 
 export default class Formulario extends React.Component {
     constructor(props) {
@@ -27,22 +28,6 @@ export default class Formulario extends React.Component {
                 ano: this.props.filme.ano,
                 tempo: this.props.filme.tempo,
                 personagens: this.props.filme.personagens
-            });
-        }
-    };
-
-    renderPersonagens() {
-        if (this.state.personagens) {
-            return this.state.personagens.map((personagem) => {
-                return (
-                    <tr
-                        key={personagem._id}
-                        onClick={() => this.removerPersonagem(personagem.nome)}
-                    >
-                        <td>{personagem.nome}</td>
-                        <td>{personagem.ator}</td>
-                    </tr>
-                );
             });
         }
     }
@@ -230,15 +215,9 @@ export default class Formulario extends React.Component {
                                 Adicionar
                             </button>
 
-                            <table className="Tabela">
-                                <thead>
-                                    <tr>
-                                        <th>Nome</th>
-                                        <th>Ator/Atriz</th>
-                                    </tr>
-                                </thead>
-                                <tbody>{this.renderPersonagens()}</tbody>
-                            </table>
+                            <ListaPersonagens onClick={this.removerPersonagem}>
+                                {this.state.personagens}
+                            </ListaPersonagens>
                         </div>
                     </div>
                     <input type="submit" className="BotaoCadastrar" value="Enviar" />

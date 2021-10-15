@@ -13,19 +13,9 @@ export default props => (
             <p>Categoria: {props.children.categoria}</p>
             <p>Duração: {props.children.tempo}</p>
             <p>Ano: {props.children.ano}</p>
-            <table className="Tabela">
-                <thead>
-                    <tr>
-                        <th>Personagem</th>
-                        <th>Ator/Atriz</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <ListaPersonagens>
-                        {props.children.personagens}
-                    </ListaPersonagens>
-                </tbody>
-            </table>
+            <ListaPersonagens>
+                {props.children.personagens}
+            </ListaPersonagens>
         </div>
     </Popup>
 )
