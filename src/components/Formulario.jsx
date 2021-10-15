@@ -32,17 +32,7 @@ export default class Formulario extends React.Component {
         }
     }
 
-    adicionarPersonagem = (nome, ator) => {
-        let personagens = this.state.personagens
-        personagens.push({ nome, ator })
-        this.setState({ personagens })
-    };
-
-    removerPersonagem = nome => {
-        const personagens = this.state.personagens
-            .filter(item => item.nome != nome)
-        this.setState({ personagens })
-    };
+    atualizarPersonagens = personagens => this.setState({ personagens })
 
     handleChange = event => this.setState({
         [event.target.name]: event.target.value
@@ -157,10 +147,9 @@ export default class Formulario extends React.Component {
                             <br />
                         </div>
                         <EdicaoPersonagens
-                            adicionarPersonagem={this.adicionarPersonagem}
-                            removerPersonagem={this.removerPersonagem}>
-                            {this.state.personagens}
-                        </EdicaoPersonagens>
+                            personagens={this.state.personagens}
+                            onChange={this.atualizarPersonagens}
+                        />
                     </div>
                     <input type="submit" className="BotaoCadastrar" value="Enviar" />
                 </form>

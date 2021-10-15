@@ -15,11 +15,20 @@ export default class EdicaoPersonagens extends React.Component {
     })
 
     adicionarPersonagem = _ => {
-        this.props.adicionarPersonagem(this.state.nome, this.state.ator)
+        let personagens = this.props.personagens ?? []
+        personagens.push({ nome: this.state.nome, ator: this.state.ator })
+        this.props.onChange(personagens)
+
         this.setState({
             nome: "",
             ator: ""
         })
+    }
+
+    removerPersonagem = nome => {
+        const personagens = this.props.personagens
+            .filter(item => item.nome != nome)
+        this.props.onChange(personagens)
     }
 
     render() {
@@ -47,8 +56,8 @@ export default class EdicaoPersonagens extends React.Component {
                     Adicionar
                 </button>
 
-                <ListaPersonagens onClick={this.props.removerPersonagem}>
-                    {this.props.children}
+                <ListaPersonagens onClick={this.removerPersonagem}>
+                    {this.props.personagens}
                 </ListaPersonagens>
             </div>
         )
