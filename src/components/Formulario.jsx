@@ -6,13 +6,13 @@ export default class Formulario extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            personagens: [],
             nome: "",
             foto: "",
             categoria: this.categorias[0],
             sinopse: "",
             ano: "",
-            tempo: ""
+            tempo: "",
+            personagens: []
         }
     }
 
@@ -28,7 +28,7 @@ export default class Formulario extends React.Component {
                 ano: this.props.filme.ano,
                 tempo: this.props.filme.tempo,
                 personagens: this.props.filme.personagens
-            });
+            })
         }
     }
 
@@ -38,18 +38,10 @@ export default class Formulario extends React.Component {
         [event.target.name]: event.target.value
     })
 
-    submit = (event) => {
-        event.preventDefault();
-        let data = {
-            nome: this.state.nome,
-            foto: this.state.foto,
-            categoria: this.state.categoria,
-            sinopse: this.state.sinopse,
-            ano: this.state.ano,
-            tempo: this.state.tempo,
-            personagens: this.state.personagens
-        };
-        if (this.props.tipo === "Alterar") {
+    submit = event => {
+        event.preventDefault()
+        const data = this.state
+        if (this.props.filme !== null) {
             axios
                 .put(
                     "https://frameworks-web.herokuapp.com/api/filmes/" +
@@ -57,14 +49,14 @@ export default class Formulario extends React.Component {
                     data
                 )
                 .then((res) => {
-                    alert("Filme alterado com sucesso!");
-                    window.location.reload();
+                    alert("Filme alterado com sucesso!")
+                    window.location.reload()
                 })
                 .catch((err) => {
-                    alert("Ocorreu um erro");
-                    console.log(err);
-                });
-        } else if (this.props.tipo === "Cadastro") {
+                    alert("Ocorreu um erro")
+                    console.log(err)
+                })
+        } else {
             axios
                 .post("https://frameworks-web.herokuapp.com/api/filmes", data)
                 .then((res) => {
@@ -74,9 +66,9 @@ export default class Formulario extends React.Component {
                 .catch((err) => {
                     alert("Ocorreu um erro");
                     console.log(err);
-                });
+                })
         }
-    };
+    }
 
     render() {
         return (

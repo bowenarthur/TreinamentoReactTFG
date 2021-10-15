@@ -10,10 +10,9 @@ export default class App extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            filme: {},
+            filme: null,
             openDetalhes: false,
-            openForm: false,
-            tipo: ""
+            openForm: false
         }
     }
 
@@ -25,37 +24,34 @@ export default class App extends React.Component {
         document.body.appendChild(script)
     }
 
-    mostrarDetalhes = (filme) => this.setState({
+    mostrarDetalhes = filme => this.setState({
         filme: filme,
         openDetalhes: true,
         openForm: false,
         personagens: filme.personagens
     })
 
-    mostrarCadastro = (filme, tipo) => this.setState({
+    mostrarCadastro = filme => this.setState({
         openForm: true,
         openDetalhes: false,
-        filme: filme,
-        tipo: tipo
+        filme: filme
     })
 
-    closeModal = () => this.setState({
+    closeModal = _ => this.setState({
         openDetalhes: false,
         openForm: false,
-        filme: {}
+        filme: null
     })
 
     render() {
         return (
             <div className="App">
-                <Header onClick={() => this.mostrarCadastro({}, "Cadastro")} />
+                <Header onClick={() => this.mostrarCadastro(null)} />
                 <ListaFilmes
-                    titulo="Últimos filmes"
                     mostrarCadastro={this.mostrarCadastro}
                     mostrarDetalhes={this.mostrarDetalhes}
                 />
                 <ListaFilmes
-                    titulo="Ação"
                     categoria="Ação"
                     mostrarCadastro={this.mostrarCadastro}
                     mostrarDetalhes={this.mostrarDetalhes}
@@ -68,7 +64,6 @@ export default class App extends React.Component {
                     <Popup open={this.state.openForm} onClose={this.closeModal}>
                         <Formulario
                             filme={this.state.filme}
-                            tipo={this.state.tipo}
                             onClose={this.closeModal}
                         />
                     </Popup>}

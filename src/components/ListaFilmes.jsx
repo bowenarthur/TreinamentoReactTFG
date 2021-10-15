@@ -21,16 +21,15 @@ export default class ListaFilme extends React.Component {
         `https://frameworks-web.herokuapp.com/api/filmes?categoria=${this.props.categoria}` :
         `https://frameworks-web.herokuapp.com/api/filmes`
 
-
     render() {
         return (
             <div>
-                <h3>{this.props.titulo}</h3>
+                <h3>{this.props.categoria ?? "Últimos Filmes"}</h3>
                 <div className="scrollmenu row dragscroll">
                     {this.state.filmes.map(filme => (
                         <Filme
                             key={filme._id}
-                            mostrarCadastro={() => this.props.mostrarCadastro(filme, "Alterar")}
+                            mostrarCadastro={() => this.props.mostrarCadastro(filme)}
                             mostrarDetalhes={() => this.props.mostrarDetalhes(filme)}
                         >
                             {filme}

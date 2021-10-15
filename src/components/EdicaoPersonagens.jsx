@@ -15,14 +15,16 @@ export default class EdicaoPersonagens extends React.Component {
     })
 
     adicionarPersonagem = _ => {
-        let personagens = this.props.personagens ?? []
-        personagens.push({ nome: this.state.nome, ator: this.state.ator })
-        this.props.onChange(personagens)
+        if (this.state.nome != "" && this.state.ator != "") {
+            let personagens = this.props.personagens ?? []
+            personagens.push({ nome: this.state.nome, ator: this.state.ator })
+            this.props.onChange(personagens)
 
-        this.setState({
-            nome: "",
-            ator: ""
-        })
+            this.setState({
+                nome: "",
+                ator: ""
+            })
+        }
     }
 
     removerPersonagem = nome => {
