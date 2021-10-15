@@ -71,7 +71,7 @@ export default class Formulario extends React.Component {
         let data = {
             nome: this.state.nome,
             foto: this.state.foto,
-            categoria: this.state.categoria,
+            categoria: this.state.categoria ?? this.categorias[0],
             sinopse: this.state.sinopse,
             ano: this.state.ano,
             tempo: this.state.tempo,

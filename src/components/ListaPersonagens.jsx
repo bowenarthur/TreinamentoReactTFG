@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default props => (
+export default props => props.children.length != 0 &&
     <table className="Tabela">
         <thead>
             <tr>
@@ -10,11 +10,12 @@ export default props => (
         </thead>
         <tbody>
             {props.children && props.children.map(personagem => (
-                <tr key={personagem._id} onClick={() => props.onClick(personagem.nome)}>
+                <tr key={personagem.nome} onClick={() => props.onClick(personagem.nome)}>
                     <td>{personagem.nome}</td>
                     <td>{personagem.ator}</td>
                 </tr>
             ))}
         </tbody>
     </table>
-)
+
+

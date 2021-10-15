@@ -47,9 +47,9 @@ export default class EdicaoPersonagens extends React.Component {
                     Adicionar
                 </button>
 
-                {this.props.children && <ListaPersonagens onClick={this.props.removerPersonagem}>
+                <ListaPersonagens onClick={this.props.removerPersonagem}>
                     {this.props.children}
-                </ListaPersonagens>}
+                </ListaPersonagens>
             </div>
         )
     }
