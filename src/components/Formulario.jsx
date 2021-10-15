@@ -1,22 +1,22 @@
 import React from "react"
 import axios from "axios"
-import ListaPersonagens from "./ListaPersonagens";
+import EdicaoPersonagens from "./EdicaoPersonagens";
 
 export default class Formulario extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             personagens: [],
-            nomepersonagem: "",
-            ator: "",
             nome: "",
             foto: "",
             categoria: "",
             sinopse: "",
             ano: "",
             tempo: ""
-        };
+        }
     }
+
+    categorias = ["Ação", "Comédia", "Documentário", "Drama", "Fantasia", "Ficção", "Romance", "Terror"]
 
     componentDidMount = () => {
         if (this.props.filme) {
@@ -32,26 +32,22 @@ export default class Formulario extends React.Component {
         }
     }
 
-    adicionarPersonagem = () => {
+    adicionarPersonagem = (nome, ator) => {
         let aux = this.state.personagens;
         if (aux) {
             aux[aux.length] = {
-                nome: this.state.nomepersonagem,
-                ator: this.state.ator
+                nome: nome,
+                ator: ator
             };
         } else {
             aux = [
                 {
-                    nome: this.state.nomepersonagem,
-                    ator: this.state.ator
+                    nome: nome,
+                    ator: ator
                 }
             ];
         }
-        this.setState({
-            personagens: aux,
-            nomepersonagem: "",
-            ator: ""
-        });
+        this.setState({ personagens: aux })
     };
 
     removerPersonagem = (nome) => {
@@ -63,21 +59,12 @@ export default class Formulario extends React.Component {
             }
         });
         aux.splice(indice, 1);
-        this.setState({
-            personagens: aux,
-            nomepersonagem: "",
-            ator: ""
-        });
+        this.setState({ personagens: aux })
     };
 
-    handleChange = (event) => {
-        const target = event.target;
-        const name = target.name;
-        const value = target.value;
-        this.setState({
-            [name]: value
-        });
-    };
+    handleChange = event => this.setState({
+        [event.target.name]: event.target.value
+    })
 
     submit = (event) => {
         event.preventDefault();
@@ -154,15 +141,9 @@ export default class Formulario extends React.Component {
                                 onChange={this.handleChange}
                                 required
                             >
-                                <option value=""> </option>
-                                <option value="Ação">Ação</option>
-                                <option value="Comédia">Comédia</option>
-                                <option value="Documentário">Documentário</option>
-                                <option value="Drama">Drama</option>
-                                <option value="Fantasia">Fantasia</option>
-                                <option value="Ficção">Ficção</option>
-                                <option value="Romance">Romance</option>
-                                <option value="Terror">Terror</option>
+                                {this.categorias.map(categoria => <option value={categoria}>
+                                    {categoria}
+                                </option>)}
                             </select>
                             <br />
                             <label htmlFor="sinopse">Sinopse: </label>
@@ -193,32 +174,11 @@ export default class Formulario extends React.Component {
                             />
                             <br />
                         </div>
-                        <div>
-                            <h3>Personagens</h3>
-                            <br />
-                            <label htmlFor="nomepersonagem">Nome: </label>
-                            <input
-                                type="text"
-                                name="nomepersonagem"
-                                value={this.state.nomepersonagem}
-                                onChange={this.handleChange}
-                            />
-                            <br />
-                            <label htmlFor="personagem">Ator/Atriz: </label>
-                            <input
-                                type="text"
-                                name="ator"
-                                value={this.state.ator}
-                                onChange={this.handleChange}
-                            />
-                            <button type="button" onClick={this.adicionarPersonagem}>
-                                Adicionar
-                            </button>
-
-                            <ListaPersonagens onClick={this.removerPersonagem}>
-                                {this.state.personagens}
-                            </ListaPersonagens>
-                        </div>
+                        <EdicaoPersonagens
+                            adicionarPersonagem={this.adicionarPersonagem}
+                            removerPersonagem={this.removerPersonagem}>
+                            {this.state.personagens}
+                        </EdicaoPersonagens>
                     </div>
                     <input type="submit" className="BotaoCadastrar" value="Enviar" />
                 </form>

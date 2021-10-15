@@ -9,7 +9,7 @@ export default props => (
             </tr>
         </thead>
         <tbody>
-            {props.children.map(personagem => (
+            {props.children && props.children.map(personagem => (
                 <tr key={personagem._id} onClick={() => props.onClick(personagem.nome)}>
                     <td>{personagem.nome}</td>
                     <td>{personagem.ator}</td>
