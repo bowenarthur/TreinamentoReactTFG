@@ -33,33 +33,15 @@ export default class Formulario extends React.Component {
     }
 
     adicionarPersonagem = (nome, ator) => {
-        let aux = this.state.personagens;
-        if (aux) {
-            aux[aux.length] = {
-                nome: nome,
-                ator: ator
-            };
-        } else {
-            aux = [
-                {
-                    nome: nome,
-                    ator: ator
-                }
-            ];
-        }
-        this.setState({ personagens: aux })
+        let personagens = this.state.personagens
+        personagens.push({ nome, ator })
+        this.setState({ personagens })
     };
 
-    removerPersonagem = (nome) => {
-        let aux = this.state.personagens;
-        let indice;
-        aux.map((p, index) => {
-            if (p.nome === nome) {
-                indice = index;
-            }
-        });
-        aux.splice(indice, 1);
-        this.setState({ personagens: aux })
+    removerPersonagem = nome => {
+        const personagens = this.state.personagens
+            .filter(item => item.nome != nome)
+        this.setState({ personagens })
     };
 
     handleChange = event => this.setState({
