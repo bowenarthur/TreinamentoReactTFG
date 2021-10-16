@@ -27,20 +27,19 @@ export default class App extends React.Component {
     mostrarDetalhes = filme => this.setState({
         filme: filme,
         openDetalhes: true,
-        openForm: false,
-        personagens: filme.personagens
+        openForm: false
     })
 
     mostrarCadastro = filme => this.setState({
-        openForm: true,
+        filme: filme,
         openDetalhes: false,
-        filme: filme
+        openForm: true
     })
 
     closeModal = _ => this.setState({
+        filme: null,
         openDetalhes: false,
-        openForm: false,
-        filme: null
+        openForm: false
     })
 
     render() {
