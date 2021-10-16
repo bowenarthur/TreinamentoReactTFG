@@ -11,7 +11,7 @@ export default class Formulario extends React.Component {
             categoria: this.categorias[0],
             sinopse: "",
             ano: "",
-            tempo: "",
+            duracao: "",
             personagens: []
         }
     }
@@ -26,7 +26,7 @@ export default class Formulario extends React.Component {
                 categoria: this.props.filme.categoria,
                 sinopse: this.props.filme.sinopse,
                 ano: this.props.filme.ano,
-                tempo: this.props.filme.tempo,
+                duracao: this.props.filme.duracao,
                 personagens: this.props.filme.personagens
             })
         }
@@ -104,11 +104,11 @@ export default class Formulario extends React.Component {
                                 required
                             />
                             <br />
-                            <label htmlFor="tempo">Duração: </label>
+                            <label htmlFor="duracao">Duração (min): </label>
                             <input
-                                type="text"
-                                name="tempo"
-                                value={this.state.tempo}
+                                type="number"
+                                name="duracao"
+                                value={this.state.duracao}
                                 onChange={this.handleChange}
                                 required
                             />
