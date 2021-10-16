@@ -1,6 +1,6 @@
 import React from 'react'
 import Filme from './Filme'
-import axios from "axios"
+import { lerFilmes } from '../Servico'
 
 export default class ListaFilme extends React.Component {
     constructor(props) {
@@ -9,17 +9,9 @@ export default class ListaFilme extends React.Component {
     }
 
     componentDidMount() {
-        this.getFilmes()
+        lerFilmes(this.props.categoria)
+            .then(res => this.setState({ filmes: res.data }))
     }
-
-    getFilmes = _ => axios
-        .get(this.getURL())
-        .then(res => this.setState({ filmes: res.data }))
-        .catch((err) => console.log(err))
-
-    getURL = _ => this.props.categoria ?
-        `https://frameworks-web.herokuapp.com/api/filmes?categoria=${this.props.categoria}` :
-        `https://frameworks-web.herokuapp.com/api/filmes`
 
     render() {
         return (

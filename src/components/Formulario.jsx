@@ -1,6 +1,6 @@
 import React from "react"
-import axios from "axios"
-import EdicaoPersonagens from "./EdicaoPersonagens";
+import EdicaoPersonagens from "./EdicaoPersonagens"
+import { inserirFilme, atualizarFilme } from "../Servico"
 
 export default class Formulario extends React.Component {
     constructor(props) {
@@ -41,33 +41,9 @@ export default class Formulario extends React.Component {
     submit = event => {
         event.preventDefault()
         const data = this.state
-        if (this.props.filme !== null) {
-            axios
-                .put(
-                    "https://frameworks-web.herokuapp.com/api/filmes/" +
-                    this.props.filme._id,
-                    data
-                )
-                .then((res) => {
-                    alert("Filme alterado com sucesso!")
-                    window.location.reload()
-                })
-                .catch((err) => {
-                    alert("Ocorreu um erro")
-                    console.log(err)
-                })
-        } else {
-            axios
-                .post("https://frameworks-web.herokuapp.com/api/filmes", data)
-                .then((res) => {
-                    alert("Filme cadastrado com sucesso!");
-                    window.location.reload();
-                })
-                .catch((err) => {
-                    alert("Ocorreu um erro");
-                    console.log(err);
-                })
-        }
+        this.props.filme !== null ?
+            atualizarFilme(this.props.filme._id, data) :
+            inserirFilme(data)
     }
 
     render() {
