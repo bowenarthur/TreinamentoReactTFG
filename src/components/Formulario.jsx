@@ -20,15 +20,7 @@ export default class Formulario extends React.Component {
 
     componentDidMount = () => {
         if (this.props.filme) {
-            this.setState({
-                nome: this.props.filme.nome,
-                foto: this.props.filme.foto,
-                categoria: this.props.filme.categoria,
-                sinopse: this.props.filme.sinopse,
-                ano: this.props.filme.ano,
-                duracao: this.props.filme.duracao,
-                personagens: this.props.filme.personagens
-            })
+            this.setState(this.props.filme)
         }
     }
 
