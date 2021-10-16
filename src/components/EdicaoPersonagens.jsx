@@ -35,7 +35,7 @@ export default class EdicaoPersonagens extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="edicao">
                 <h3>Personagens</h3>
                 <br />
                 <label htmlFor="nome">Nome: </label>
