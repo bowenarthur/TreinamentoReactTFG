@@ -4,7 +4,7 @@ import { inserirFilme, atualizarFilme } from "../Servico"
 
 export default class Formulario extends React.Component {
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
             nome: "",
             foto: "",
@@ -33,7 +33,7 @@ export default class Formulario extends React.Component {
     submit = event => {
         event.preventDefault()
         const data = this.state
-        this.props.filme !== null ?
+        this.props.filme ?
             atualizarFilme(this.props.filme._id, data) :
             inserirFilme(data)
     }
