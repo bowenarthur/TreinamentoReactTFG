@@ -65,12 +65,13 @@ export default class App extends React.Component {
             <div className="App">
                 <Header onClick={() => this.mostrarCadastro(null)} />
                 <ListaFilmes
+                    titulo="Últimos Filmes"
                     filmes={this.state.filmes}
                     mostrarCadastro={this.mostrarCadastro}
                     mostrarDetalhes={this.mostrarDetalhes}
                 />
                 <ListaFilmes
-                    categoria="Ação"
+                    titulo="Ação"
                     filmes={this.state.filmesAcao}
                     mostrarCadastro={this.mostrarCadastro}
                     mostrarDetalhes={this.mostrarDetalhes}
