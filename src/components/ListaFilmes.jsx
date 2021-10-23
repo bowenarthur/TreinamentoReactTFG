@@ -11,11 +11,9 @@ export default props => (
                     id={filme._id}
                     nome={filme.nome}
                     foto={filme.foto}
-                    mostrarCadastro={() => props.mostrarCadastro(filme)}
+                    mostrarForm={() => props.mostrarForm(filme)}
                     mostrarDetalhes={() => props.mostrarDetalhes(filme)}
-                >
-                    {filme}
-                </Filme>
+                ></Filme>
             ))}
         </div>
     </div>

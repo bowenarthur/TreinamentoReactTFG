@@ -46,13 +46,13 @@ export default class App extends React.Component {
         openDetalhes: false
     })
 
-    mostrarCadastro = filme => this.setState({
+    mostrarForm = filme => this.setState({
         filme: filme,
         openDetalhes: false,
         openForm: true
     })
 
-    fecharCadastro = _ => {
+    fecharForm = _ => {
         this.setState({
             filme: null,
             openForm: false
@@ -63,17 +63,17 @@ export default class App extends React.Component {
     render() {
         return (
             <div className="App">
-                <Header onClick={() => this.mostrarCadastro(null)} />
+                <Header onClick={() => this.mostrarForm(null)} />
                 <ListaFilmes
                     titulo="Últimos Filmes"
                     filmes={this.state.filmes}
-                    mostrarCadastro={this.mostrarCadastro}
+                    mostrarForm={this.mostrarForm}
                     mostrarDetalhes={this.mostrarDetalhes}
                 />
                 <ListaFilmes
                     titulo="Ação"
                     filmes={this.state.filmesAcao}
-                    mostrarCadastro={this.mostrarCadastro}
+                    mostrarForm={this.mostrarForm}
                     mostrarDetalhes={this.mostrarDetalhes}
                 />
                 {this.state.openDetalhes &&
@@ -81,10 +81,10 @@ export default class App extends React.Component {
                         {this.state.filme}
                     </Detalhes>}
                 {this.state.openForm &&
-                    <Popup open={this.state.openForm} onClose={this.fecharCadastro}>
+                    <Popup open={this.state.openForm} onClose={this.fecharForm}>
                         <Formulario
                             filme={this.state.filme}
-                            onClose={this.fecharCadastro}
+                            onClose={this.fecharForm}
                         />
                     </Popup>}
             </div>
