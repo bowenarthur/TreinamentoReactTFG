@@ -19,7 +19,7 @@ export default class Formulario extends React.Component {
     categorias = ["Ação", "Comédia", "Documentário", "Drama", "Fantasia", "Ficção", "Romance", "Terror"]
 
     componentDidMount = () => {
-        if (this.props.filme) {
+        if (this.props.filme._id) {
             this.setState(this.props.filme)
         }
     }
@@ -33,7 +33,7 @@ export default class Formulario extends React.Component {
     submit = event => {
         event.preventDefault()
         const data = this.state
-        this.props.filme ?
+        this.props.filme._id ?
             atualizarFilme(this.props.filme._id, data) :
             inserirFilme(data)
     }

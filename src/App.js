@@ -11,7 +11,7 @@ export default class App extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            filme: null,
+            filme: {},
             openDetalhes: false,
             openForm: false,
             filmes: [],
@@ -42,7 +42,7 @@ export default class App extends React.Component {
     })
 
     fecharDetalhes = _ => this.setState({
-        filme: null,
+        filme: {},
         openDetalhes: false
     })
 
@@ -54,7 +54,7 @@ export default class App extends React.Component {
 
     fecharForm = _ => {
         this.setState({
-            filme: null,
+            filme: {},
             openForm: false
         })
         this.fetchData()
@@ -63,7 +63,7 @@ export default class App extends React.Component {
     render() {
         return (
             <div className="App">
-                <Header onClick={() => this.mostrarForm(null)} />
+                <Header onClick={() => this.mostrarForm({})} />
                 <ListaFilmes
                     titulo="Últimos Filmes"
                     filmes={this.state.filmes}
@@ -76,17 +76,15 @@ export default class App extends React.Component {
                     mostrarForm={this.mostrarForm}
                     mostrarDetalhes={this.mostrarDetalhes}
                 />
-                {this.state.openDetalhes &&
-                    <Detalhes open={this.state.openDetalhes} onClose={this.fecharDetalhes}>
-                        {this.state.filme}
-                    </Detalhes>}
-                {this.state.openForm &&
-                    <Popup open={this.state.openForm} onClose={this.fecharForm}>
-                        <Formulario
-                            filme={this.state.filme}
-                            onClose={this.fecharForm}
-                        />
-                    </Popup>}
+                <Detalhes open={this.state.openDetalhes} onClose={this.fecharDetalhes}>
+                    {this.state.filme}
+                </Detalhes>
+                <Popup open={this.state.openForm} onClose={this.fecharForm}>
+                    <Formulario
+                        filme={this.state.filme}
+                        onClose={this.fecharForm}
+                    />
+                </Popup>
             </div>
         )
     }
