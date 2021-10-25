@@ -1,139 +1,42 @@
-import "../style.css"
 import React from "react"
-import axios from "axios"
+import EdicaoPersonagens from "./EdicaoPersonagens"
+import { inserirFilme, atualizarFilme } from "../Servico"
 
 export default class Formulario extends React.Component {
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
-            personagens: [],
-            nomepersonagem: "",
-            ator: "",
             nome: "",
             foto: "",
-            categoria: "",
+            categoria: this.categorias[0],
             sinopse: "",
             ano: "",
-            tempo: ""
-        };
+            duracao: "",
+            personagens: []
+        }
     }
+
+    categorias = ["Ação", "Comédia", "Documentário", "Drama", "Fantasia", "Ficção", "Romance", "Terror"]
 
     componentDidMount = () => {
-        if (this.props.filme) {
-            this.setState({
-                nome: this.props.filme.nome,
-                foto: this.props.filme.foto,
-                categoria: this.props.filme.categoria,
-                sinopse: this.props.filme.sinopse,
-                ano: this.props.filme.ano,
-                tempo: this.props.filme.tempo,
-                personagens: this.props.filme.personagens
-            });
-        }
-    };
-
-    renderPersonagens() {
-        if (this.state.personagens) {
-            return this.state.personagens.map((personagem) => {
-                return (
-                    <tr
-                        key={personagem._id}
-                        onClick={() => this.removerPersonagem(personagem.nome)}
-                    >
-                        <td>{personagem.nome}</td>
-                        <td>{personagem.ator}</td>
-                    </tr>
-                );
-            });
+        if (this.props.filme._id) {
+            this.setState(this.props.filme)
         }
     }
 
-    adicionarPersonagem = () => {
-        let aux = this.state.personagens;
-        if (aux) {
-            aux[aux.length] = {
-                nome: this.state.nomepersonagem,
-                ator: this.state.ator
-            };
-        } else {
-            aux = [
-                {
-                    nome: this.state.nomepersonagem,
-                    ator: this.state.ator
-                }
-            ];
-        }
-        this.setState({
-            personagens: aux,
-            nomepersonagem: "",
-            ator: ""
-        });
-    };
+    atualizarPersonagens = personagens => this.setState({ personagens })
 
-    removerPersonagem = (nome) => {
-        let aux = this.state.personagens;
-        let indice;
-        aux.map((p, index) => {
-            if (p.nome === nome) {
-                indice = index;
-            }
-        });
-        aux.splice(indice, 1);
-        this.setState({
-            personagens: aux,
-            nomepersonagem: "",
-            ator: ""
-        });
-    };
+    handleChange = event => this.setState({
+        [event.target.name]: event.target.value
+    })
 
-    handleChange = (event) => {
-        const target = event.target;
-        const name = target.name;
-        const value = target.value;
-        this.setState({
-            [name]: value
-        });
-    };
-
-    submit = (event) => {
-        event.preventDefault();
-        let data = {
-            nome: this.state.nome,
-            foto: this.state.foto,
-            categoria: this.state.categoria,
-            sinopse: this.state.sinopse,
-            ano: this.state.ano,
-            tempo: this.state.tempo,
-            personagens: this.state.personagens
-        };
-        if (this.props.tipo === "Alterar") {
-            axios
-                .put(
-                    "https://frameworks-web.herokuapp.com/api/filmes/" +
-                    this.props.filme._id,
-                    data
-                )
-                .then((res) => {
-                    alert("Filme alterado com sucesso!");
-                    window.location.reload();
-                })
-                .catch((err) => {
-                    alert("Ocorreu um erro");
-                    console.log(err);
-                });
-        } else if (this.props.tipo === "Cadastro") {
-            axios
-                .post("https://frameworks-web.herokuapp.com/api/filmes", data)
-                .then((res) => {
-                    alert("Filme cadastrado com sucesso!");
-                    window.location.reload();
-                })
-                .catch((err) => {
-                    alert("Ocorreu um erro");
-                    console.log(err);
-                });
-        }
-    };
+    submit = event => {
+        event.preventDefault()
+        const data = this.state
+        this.props.filme._id ?
+            atualizarFilme(this.props.filme._id, data) :
+            inserirFilme(data)
+    }
 
     render() {
         return (
@@ -170,15 +73,9 @@ export default class Formulario extends React.Component {
                                 onChange={this.handleChange}
                                 required
                             >
-                                <option value=""> </option>
-                                <option value="Ação">Ação</option>
-                                <option value="Comédia">Comédia</option>
-                                <option value="Documentário">Documentário</option>
-                                <option value="Drama">Drama</option>
-                                <option value="Fantasia">Fantasia</option>
-                                <option value="Ficção">Ficção</option>
-                                <option value="Romance">Romance</option>
-                                <option value="Terror">Terror</option>
+                                {this.categorias.map(categoria => <option value={categoria}>
+                                    {categoria}
+                                </option>)}
                             </select>
                             <br />
                             <label htmlFor="sinopse">Sinopse: </label>
@@ -199,48 +96,20 @@ export default class Formulario extends React.Component {
                                 required
                             />
                             <br />
-                            <label htmlFor="tempo">Duração: </label>
+                            <label htmlFor="duracao">Duração (min): </label>
                             <input
-                                type="text"
-                                name="tempo"
-                                value={this.state.tempo}
+                                type="number"
+                                name="duracao"
+                                value={this.state.duracao}
                                 onChange={this.handleChange}
                                 required
                             />
                             <br />
                         </div>
-                        <div>
-                            <h3>Personagens</h3>
-                            <br />
-                            <label htmlFor="nomepersonagem">Nome: </label>
-                            <input
-                                type="text"
-                                name="nomepersonagem"
-                                value={this.state.nomepersonagem}
-                                onChange={this.handleChange}
-                            />
-                            <br />
-                            <label htmlFor="personagem">Ator/Atriz: </label>
-                            <input
-                                type="text"
-                                name="ator"
-                                value={this.state.ator}
-                                onChange={this.handleChange}
-                            />
-                            <button type="button" onClick={this.adicionarPersonagem}>
-                                Adicionar
-                            </button>
-
-                            <table className="Tabela">
-                                <thead>
-                                    <tr>
-                                        <th>Nome</th>
-                                        <th>Ator/Atriz</th>
-                                    </tr>
-                                </thead>
-                                <tbody>{this.renderPersonagens()}</tbody>
-                            </table>
-                        </div>
+                        <EdicaoPersonagens
+                            personagens={this.state.personagens}
+                            onChange={this.atualizarPersonagens}
+                        />
                     </div>
                     <input type="submit" className="BotaoCadastrar" value="Enviar" />
                 </form>

@@ -144,6 +144,10 @@ h4 {
   width: 50%;
 }
 
+.edicao h3 {
+    color: black;
+}
+
 .Tabela {
   text-align: center;
   border-collapse: collapse;

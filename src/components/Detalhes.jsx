@@ -11,21 +11,11 @@ export default props => (
             <h4>{props.children.nome}</h4>
             <p>Sinopse: {props.children.sinopse}</p>
             <p>Categoria: {props.children.categoria}</p>
-            <p>Duração: {props.children.tempo}</p>
+            <p>Duração: {props.children.duracao} min</p>
             <p>Ano: {props.children.ano}</p>
-            <table className="Tabela">
-                <thead>
-                    <tr>
-                        <th>Personagem</th>
-                        <th>Ator/Atriz</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <ListaPersonagens>
-                        {props.children.personagens}
-                    </ListaPersonagens>
-                </tbody>
-            </table>
+            <ListaPersonagens>
+                {props.children.personagens}
+            </ListaPersonagens>
         </div>
     </Popup>
 )
