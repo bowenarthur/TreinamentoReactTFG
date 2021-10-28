@@ -7,13 +7,13 @@ export default props => (
             <a className="edit" onClick={props.mostrarForm}>
                 &#9998;
             </a>
-            <a className="delete" onClick={() => excluirFilme(props.id)}>
+            <a className="delete" onClick={() => excluirFilme(props.filme._id)}>
                 &#128465;
             </a>
         </div>
         <div className="card" onClick={props.mostrarDetalhes}>
-            <img alt="" src={props.foto} />
-            <p>{props.nome}</p>
+            <img alt="" src={props.filme.foto} />
+            <p>{props.filme.nome}</p>
         </div>
     </div>
 )
