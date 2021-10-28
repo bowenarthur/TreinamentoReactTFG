@@ -40,13 +40,13 @@ export default class Formulario extends React.Component {
 
     render() {
         return (
-            <div className="Modal">
+            <div className="modal">
                 <a className="close" onClick={this.props.onClose}>
                     &times;
                 </a>
                 <form onSubmit={this.submit}>
                     <h2>Cadastro de Filme</h2>
-                    <div className="Formulario">
+                    <div className="formulario">
                         <div>
                             <label htmlFor="nome">Nome: </label>
                             <input
@@ -111,7 +111,7 @@ export default class Formulario extends React.Component {
                             onChange={this.atualizarPersonagens}
                         />
                     </div>
-                    <input type="submit" className="BotaoCadastrar" value="Enviar" />
+                    <input type="submit" className="botao-cadastrar" value="Enviar" />
                 </form>
             </div>
         )

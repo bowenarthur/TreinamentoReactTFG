@@ -1,9 +1,9 @@
 import React from 'react'
 
 export default props => (
-    <div className="Header">
-        <h3 className="TituloSite">LISTA DE FILMES</h3>
-        <ul className="MenuSite">
+    <div className="header">
+        <h3 className="titulo-site">LISTA DE FILMES</h3>
+        <ul className="menu-site">
             <li>
                 <a onClick={props.onClick}>
                     CADASTRAR FILME

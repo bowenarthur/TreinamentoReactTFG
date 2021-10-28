@@ -4,7 +4,7 @@ import ListaPersonagens from './ListaPersonagens'
 
 export default props => (
     <Popup open={props.open} onClose={props.onClose}>
-        <div className="Modal">
+        <div className="modal">
             <a className="close" onClick={props.onClose}>
                 &times;
             </a>

@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default props => props.children ? props.children.length != 0 &&
-    <table className="Tabela">
+    <table className="tabela">
         <thead>
             <tr>
                 <th>Personagem</th>

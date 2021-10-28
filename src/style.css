@@ -94,7 +94,7 @@ h4 {
   color: rgba(0, 0, 0, 0.5);
 }
 
-.Formulario {
+.formulario {
   text-align: center;
   display: flex;
   width: 100%;
@@ -102,25 +102,25 @@ h4 {
   text-align: right;
 }
 
-.Formulario h3 {
+.formulario h3 {
   margin: 0 25% 0 0;
 }
 
-.Formulario label {
+.formulario label {
   font-size: 1.2vw;
 }
 
-.Formulario input,
-.Formulario select,
-.Formulario textarea {
+.formulario input,
+.formulario select,
+.formulario textarea {
   margin-top: 1%;
   margin-right: 5%;
   font-size: 1vw;
   width: 45%;
 }
 
-.Formulario button,
-.BotaoCadastrar {
+.formulario button,
+.botao-cadastrar {
   font-size: 1.2vw;
   margin: 2%;
   background-color: rgb(231, 231, 231);
@@ -130,17 +130,17 @@ h4 {
   cursor: pointer;
 }
 
-.BotaoCadastrar {
+.botao-cadastrar {
   width: 25%;
   padding: 0.5%;
 }
 
-.Formulario button:hover,
-.BotaoCadastrar:hover {
+.formulario button:hover,
+.botao-cadastrar:hover {
   background-color: rgba(231, 231, 231, 0.8);
 }
 
-.Formulario div {
+.formulario div {
   width: 50%;
 }
 
@@ -148,7 +148,7 @@ h4 {
     color: black;
 }
 
-.Tabela {
+.tabela {
   text-align: center;
   border-collapse: collapse;
   width: 100%;
@@ -159,25 +159,25 @@ h4 {
   border: 1px solid black;
 }
 
-.Tabela td,
-.Tabela th {
+.tabela td,
+.tabela th {
   border-bottom: 1px solid black;
 }
 
-.Tabela th {
+.tabela th {
   text-align: center;
   color: black;
   font-weight: bold;
   padding: 0.2% 0;
 }
 
-.Tabela td {
+.tabela td {
   padding: 1%;
   height: auto;
   cursor: pointer;
 }
 
-.Modal {
+.modal {
   max-width: 50vw;
   max-height: 80vh;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
@@ -187,17 +187,17 @@ h4 {
   padding: 3%;
 }
 
-.Modal h3 {
+.modal h3 {
   margin-bottom: 8%;
   margin-top: 0;
   font-size: 1.2vw;
 }
 
-.Modal p {
+.modal p {
   font-size: 0.9vw;
 }
 
-.Modal button {
+.modal button {
   border: none;
   background-color: rgb(231, 231, 231);
   padding: 2.5%;
@@ -209,7 +209,7 @@ h4 {
   cursor: pointer;
 }
 
-.Modal button:hover {
+.modal button:hover {
   background-color: rgba(231, 231, 231, 0.8);
 }
 
@@ -251,11 +251,11 @@ h4 {
   background: rgba(178, 34, 34, 0.6);
 }
 
-.Esconde {
+.esconde {
   display: none;
 }
 
-.Header {
+.header {
   background-color: #b22222;
   display: flex;
   flex-wrap: nowrap;
@@ -266,7 +266,7 @@ h4 {
   font-size: 0.9vw;
 }
 
-.MenuSite {
+.menu-site {
   list-style-type: none;
   margin: 1% 0 0 20%;
   padding: 0;
@@ -275,24 +275,24 @@ h4 {
   font-size: 1.5vw;
 }
 
-.MenuSite li {
+.menu-site li {
   margin-left: 2%;
   color: white;
 }
 
-.MenuSite li > h4 {
+.menu-site li > h4 {
   margin: 0;
 }
 
-.MenuSite li > a {
+.menu-site li > a {
   cursor: pointer;
 }
 
-.MenuSite li > a:hover {
+.menu-site li > a:hover {
   color: lightgrey;
 }
 
-.TituloSite {
+.titulo-site {
   width: 40%;
   margin: 1% 10%;
   font-size: 1.8vw;
