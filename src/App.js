@@ -62,7 +62,7 @@ export default class App extends React.Component {
 
     render() {
         return (
-            <div className="App">
+            <div className="app">
                 <Header onClick={() => this.mostrarForm({})} />
                 <ListaFilmes
                     titulo="Últimos Filmes"
@@ -76,9 +76,11 @@ export default class App extends React.Component {
                     mostrarForm={this.mostrarForm}
                     mostrarDetalhes={this.mostrarDetalhes}
                 />
-                <Detalhes open={this.state.openDetalhes} onClose={this.fecharDetalhes}>
-                    {this.state.filme}
-                </Detalhes>
+                <Popup open={this.state.openDetalhes} onClose={this.fecharDetalhes}>
+                    <Detalhes onClose={this.fecharDetalhes}>
+                        {this.state.filme}
+                    </Detalhes>
+                </Popup>
                 <Popup open={this.state.openForm} onClose={this.fecharForm}>
                     <Formulario
                         filme={this.state.filme}

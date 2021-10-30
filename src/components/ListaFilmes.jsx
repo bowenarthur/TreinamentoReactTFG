@@ -8,9 +8,7 @@ export default props => (
             {props.filmes.map(filme => (
                 <Filme
                     key={filme._id}
-                    id={filme._id}
-                    nome={filme.nome}
-                    foto={filme.foto}
+                    filme={filme}
                     mostrarForm={() => props.mostrarForm(filme)}
                     mostrarDetalhes={() => props.mostrarDetalhes(filme)}
                 ></Filme>
