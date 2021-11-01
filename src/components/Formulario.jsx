@@ -73,7 +73,7 @@ export default class Formulario extends React.Component {
                                 onChange={this.handleChange}
                                 required
                             >
-                                {this.categorias.map(categoria => <option value={categoria}>
+                                {this.categorias.map(categoria => <option key={categoria} value={categoria}>
                                     {categoria}
                                 </option>)}
                             </select>
